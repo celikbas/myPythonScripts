@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+'''This script converts Turkish characters in a filename to equivalent UTF-8 characters'''
+
+import sys
+import os
+from os import path
+
+#print ('Number of arguments:', len(sys.argv), 'arguments.')
+#print ('Argument List:', str(sys.argv))
+
+# For Turkish Character
+translationTable = str.maketrans("ğĞıİöÖüÜşŞçÇ ", "gGiIoOuUsScC_")
+
+if len(sys.argv) == 1: sys.argv[1:] = ["-h"]
+arguments = sys.argv[1:]
+
+#count = len(arguments)
+#sys.exit()
+
+for directory in arguments:
+    print(directory)
+    if directory == '-h':
+        program_name = sys.argv[0]
+        print ("Usage: python " + program_name + "directory name/names")
+        sys.exit(1)
+
+    if path.exists(directory) :
+        print(directory)
+        for file in os.listdir(directory):
+            src = directory + file
+            dst = src.translate(translationTable)
+            print(src + " ==> " + dst)
+            os.rename(src, dst)
+    else:
+        print('not exists')
