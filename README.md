@@ -4,7 +4,9 @@
 
 ## trename: file renamer
 
-This script converts Turkish characters in a filename to equivalent UTF-8 characters
+Dosya/Dizin isimlerindeki Türkçe karakterleri noktasız benzerlerine çevirir.
+
+Converts Turkish characters in file / directory names to pointless equivalents.
 
 `usage: trename [-h] directory_name/`
 
